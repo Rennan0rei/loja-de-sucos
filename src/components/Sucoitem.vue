@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div>
         <h3>{{ nome }}</h3>
@@ -9,6 +6,7 @@
             type="number"
             v-model="quantidade"
             min="0"
+            step="1"
             @input="validarQuantidade"
         />
         <button @click="comprarSuco">Comprar</button>
@@ -41,9 +39,7 @@ export default {
             }
         },
         validarQuantidade() {
-            if (this.quantidade < 0) {
-                this.quantidade = 0;
-            }
+            this.quantidade = Math.max(0, Math.floor(this.quantidade) || 0);
         }
     },
 };
