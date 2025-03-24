@@ -4,12 +4,16 @@
 <template>
     <div>
         <h3>{{ nome }}</h3>
-        <input placeholder="Quantidade"
-               type="number"
-               v-model="quantidade"
+        <input 
+            placeholder="Quantidade"
+            type="number"
+            v-model="quantidade"
+            min="0"
+            @input="validarQuantidade"
         />
-        <button @click="comprarSuco"> Comprar</button>
-        <p> Comprado {{ sacola }} vezes</p>
+        <button @click="comprarSuco">Comprar</button>
+        <button @click="removerSuco">Remover</button>
+        <p>Comprado {{ sacola }} vezes</p>
     </div>
 </template>
 
@@ -24,9 +28,23 @@ export default {
     },
     methods: {
         comprarSuco() {
-            this.sacola = this.quantidade + this.sacola;
-            console.log(this.sacola)
+            if (this.quantidade > 0) {
+                this.sacola += this.quantidade;
+            }
         },
+        removerSuco() {
+            if (this.quantidade > 0) {
+                this.sacola -= this.quantidade;
+                if (this.sacola < 0) {
+                    this.sacola = 0;
+                }
+            }
+        },
+        validarQuantidade() {
+            if (this.quantidade < 0) {
+                this.quantidade = 0;
+            }
+        }
     },
 };
 </script>
