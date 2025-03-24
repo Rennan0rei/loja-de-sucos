@@ -2,21 +2,27 @@
 </script>
 
 <template>
-    <h1> Sucadas Maravilhas</h1>
-    <p>Suco de Limão</p>
-    <button>Comprar</button>
-    <p>Você comprou {{ contador }} vezes</p>
+    <div>
+        <h3>{{ nome }}</h3>
+        <input placeholder="Quantidade"
+               type="number"
+               v-model="quantidade" />
+    </div>
 </template>
 
 <script>
 export default {
     props: ["nome"],
     data() {
-        return { contador: 0};
+        return {
+            sacola: 0,
+            quantidade: 0,
+        };
     },
     methods: {
         comprarSuco() {
-            this.contador++;
+            this.sacola = this.quantidade + this.sacola;
+            console.log(this.sacola)
         },
     },
 };
