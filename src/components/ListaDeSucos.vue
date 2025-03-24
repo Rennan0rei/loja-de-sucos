@@ -3,8 +3,10 @@
 
 <template>
     <div>
-        <SucoItem nome="Suco De Limão"
-            
+        <SucoItem
+            v-for="suco in sucos"
+            :key="suco"
+            :nome="suco"
         />
     </div>
 </template>
