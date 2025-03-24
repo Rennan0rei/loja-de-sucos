@@ -6,7 +6,10 @@
         <h3>{{ nome }}</h3>
         <input placeholder="Quantidade"
                type="number"
-               v-model="quantidade" />
+               v-model="quantidade"
+        />
+        <button @click="comprarSuco"> Comprar</button>
+        <p> Comprado {{ sacola }} vezes</p>
     </div>
 </template>
 
